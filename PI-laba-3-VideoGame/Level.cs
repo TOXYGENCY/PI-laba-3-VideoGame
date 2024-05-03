@@ -1,23 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PI_laba_3_VideoGame
+﻿namespace PI_laba_3_VideoGame
 {
     public class Level
     {
-        short LevelNumber;
+        protected string LevelName { get; private set; }
 
         /// <summary>
         /// Конструктор класса Level
         /// </summary>
-        /// <param name="LevelNumber">Число типа short</param>
-        public Level(short LevelNumber) 
+        /// <param name="LevelName">Текст типа string</param>
+        public Level(string lname)
         {
-            this.LevelNumber = LevelNumber;
+
+            if (lname == null || lname.GetType() != typeof(string))
+            {
+                Console.WriteLine($"Значение LevelName должно быть типа {typeof(string)}! Сейчас: {lname.GetType()}");
+            }
+            else
+            {
+                this.LevelName = lname;
+            }
         }
 
+        public string GetLevelName()
+        {
+            return this.LevelName;
+        }
     }
 }
